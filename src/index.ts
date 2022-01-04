@@ -1,6 +1,7 @@
 import { Client, TextChannel } from 'discord.js';
 import { load } from 'cheerio';
-import { token, channels } from '../config.json';
+import { token } from '../config.json';
+import channels from '../channels.json';
 import axios from 'axios';
 import fs from 'node:fs';
 
@@ -8,6 +9,7 @@ const client = new Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'],
 });
 
+process.on('unhandledRejection', console.error);
 (async () => {
   client.on('ready', () => {
     console.log('Ready as ' + client.user.tag);
@@ -20,9 +22,14 @@ const client = new Client({
       const pageContent = $('.fsPagePopMessage')
         .html()
         .replaceAll(/<p>/gi, '')
-        .replaceAll(/<\/p>/gi, '\n');
+        .replaceAll(/<\/p>/gi, '\n')
+        .replaceAll(/\n\n/, '\n')
+        .replace(
+          /<a\shref=\"([^"]*)">([^<]*)<\/a>/gim,
+          (match, url, text) => '[' + text + '](' + url + ')'
+        );
       channels.forEach((channel) => {
-        (client.channels.cache.get(channel) as TextChannel).send({
+        (client.channels.cache.get(channel) as TextChannel)?.send({
           embeds: [
             {
               title: $('.fsPagePopTitle').html(),
