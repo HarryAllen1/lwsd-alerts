@@ -24,10 +24,11 @@ process.on('unhandledRejection', console.error);
         .replaceAll(/<p>/gi, '')
         .replaceAll(/<\/p>/gi, '\n')
         .replaceAll(/\n\n/gi, '\n')
-        .replace(
+        .replaceAll(
           /<a\shref=\"([^"]*)">([^<]*)<\/a>/gim,
           (match, url, text) => '[' + text + '](' + url + ')'
-        );
+        )
+        .replaceAll('&nbsp;', '\n');
       channels.forEach((channel) => {
         (client.channels.cache.get(channel) as TextChannel)?.send({
           embeds: [
