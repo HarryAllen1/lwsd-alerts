@@ -23,7 +23,7 @@ process.on('unhandledRejection', console.error);
         .html()
         .replaceAll(/<p>/gi, '')
         .replaceAll(/<\/p>/gi, '\n')
-        .replaceAll(/\n\n/, '\n')
+        .replaceAll(/\n\n/gi, '\n')
         .replace(
           /<a\shref=\"([^"]*)">([^<]*)<\/a>/gim,
           (match, url, text) => '[' + text + '](' + url + ')'
