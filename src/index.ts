@@ -27,8 +27,8 @@ process.on('unhandledRejection', console.error);
     if ($('.fsPagePopTitle').html() !== cache.lastEntry) {
       const pageContent = turndownService
         .turndown($('.fsPagePopMessage').html())
-        .replaceAll(/\n\n/gi, '\n')
-        .replaceAll('&nbsp;', '\n');
+        ?.replaceAll(/\n\n/gi, '\n')
+        ?.replaceAll('&nbsp;', '\n');
       channels.forEach((channel) => {
         (client.channels.cache.get(channel) as TextChannel)?.send({
           embeds: [
