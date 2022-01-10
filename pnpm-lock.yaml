@@ -1,17 +1,21 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@types/turndown': ^5.0.1
   axios: ^0.24.0
   cheerio: ^1.0.0-rc.10
   discord.js: ^13.5.0
+  turndown: ^7.1.1
   typescript: ^4.5.4
 
 dependencies:
   axios: 0.24.0
   cheerio: 1.0.0-rc.10
   discord.js: 13.5.0
+  turndown: 7.1.1
 
 devDependencies:
+  '@types/turndown': 5.0.1
   typescript: 4.5.4
 
 packages:
@@ -52,6 +56,10 @@ packages:
   /@types/node/17.0.7:
     resolution: {integrity: sha512-1QUk+WAUD4t8iR+Oj+UgI8oJa6yyxaB8a8pHaC8uqM6RrS1qbL7bf3Pwl5rHv0psm2CuDErgho6v5N+G+5fwtQ==}
     dev: false
+
+  /@types/turndown/5.0.1:
+    resolution: {integrity: sha512-N8Ad4e3oJxh9n9BiZx9cbe/0M3kqDpOTm2wzj13wdDUxDPjfjloWIJaquZzWE1cYTAHpjOH3rcTnXQdpEfS/SQ==}
+    dev: true
 
   /@types/ws/8.2.2:
     resolution: {integrity: sha512-NOn5eIcgWLOo6qW8AcuLZ7G8PycXu0xTxxkS6Q18VWFxgPUSOwV0pBj2a/4viNZVu25i7RIB7GttdkAIUUXOOg==}
@@ -167,6 +175,10 @@ packages:
       domelementtype: 2.2.0
     dev: false
 
+  /domino/2.1.6:
+    resolution: {integrity: sha512-3VdM/SXBZX2omc9JF9nOPCtDaYQ67BGp5CoLpIQlO2KCAPETs8TcDHacF26jXadGbvUteZzRTeos2fhID5+ucQ==}
+    dev: false
+
   /domutils/2.8.0:
     resolution: {integrity: sha512-w96Cjofp72M5IIhpjgobBimYEfoPjx1Vx0BSX9P30WBdZW2WIKU0T1Bd0kz2eNZ9ikjKgHbEyKx8BB6H1L3h3A==}
     dependencies:
@@ -261,6 +273,12 @@ packages:
 
   /tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
+    dev: false
+
+  /turndown/7.1.1:
+    resolution: {integrity: sha512-BEkXaWH7Wh7e9bd2QumhfAXk5g34+6QUmmWx+0q6ThaVOLuLUqsnkq35HQ5SBHSaxjSfSM7US5o4lhJNH7B9MA==}
+    dependencies:
+      domino: 2.1.6
     dev: false
 
   /typescript/4.5.4:
