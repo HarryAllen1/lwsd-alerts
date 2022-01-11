@@ -111,6 +111,29 @@ process.on('unhandledRejection', console.error);
 
   client.on('interactionCreate', async (i) => {
     if (i.isButton() && i.customId === 'viewAlerts') {
+      if (realPages === []) {
+        const homePage = await axios.get('https://lwsd.org');
+        const $ = load(homePage.data);
+        const pages: MessageEditOptions[] = [];
+        const messages: string[] = [];
+        $('.fsPagePopMessage').each((i, el) => {
+          messages[i] = $(el).html();
+        });
+        $('.fsPagePopTitle').each((i, el) => {
+          pages[i] = {
+            embeds: [
+              {
+                title: $(el).html(),
+                description: turndownService
+                  .turndown(messages[i])
+                  ?.replaceAll(/\n\n/gi, '\n')
+                  ?.replaceAll('&nbsp;', '\n'),
+              },
+            ],
+          };
+        });
+        realPages = pages;
+      }
       const paginator = new Paginator(realPages);
       paginator.start({ interaction: i });
     }
