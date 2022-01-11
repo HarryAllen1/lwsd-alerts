@@ -31,6 +31,7 @@ process.on('unhandledRejection', console.error);
       type: 'WATCHING',
       name: 'the LWSD homepage',
     });
+    console.log('Registering slash commands....');
     const rest = new REST({ version: '9' }).setToken(token);
 
     try {
@@ -61,6 +62,7 @@ process.on('unhandledRejection', console.error);
             .toJSON(),
         ],
       });
+      console.log('Done!');
     } catch (e) {
       console.error(e);
     }
