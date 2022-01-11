@@ -21,6 +21,7 @@ const turndownService = new TurndownService();
 let realPages: MessageEditOptions[] = [];
 
 process.on('unhandledRejection', console.error);
+
 (async () => {
   client.on('ready', () => {
     console.log('Ready as ' + client.user.tag);
@@ -38,6 +39,7 @@ process.on('unhandledRejection', console.error);
     if (i.isButton() && i.customId === 'testButton')
       paginator.start({ interaction: i });
   });
+
   setInterval(async () => {
     const homePage = await axios.get('https://lwsd.org');
     const $ = load(homePage.data);
@@ -64,8 +66,8 @@ process.on('unhandledRejection', console.error);
           ],
         };
       });
+      realPages = pages;
       channels.forEach((channel) => {
-        realPages = pages;
         (client.channels.cache.get(channel) as TextChannel)?.send({
           embeds: [
             {
@@ -111,9 +113,11 @@ process.on('unhandledRejection', console.error);
 
   client.on('interactionCreate', async (i) => {
     if (i.isButton() && i.customId === 'viewAlerts') {
-      if (realPages === []) {
-        const homePage = await axios.get('https://lwsd.org');
-        const $ = load(homePage.data);
+      const homePage = await axios.get('https://lwsd.org');
+      const $ = load(homePage.data);
+      if ($('article.fsPagePop.slick-slide')) {
+        // check if the first page of the carousel has changed
+
         const pages: MessageEditOptions[] = [];
         const messages: string[] = [];
         $('.fsPagePopMessage').each((i, el) => {
@@ -136,8 +140,10 @@ process.on('unhandledRejection', console.error);
         const paginator = new Paginator(pages);
         paginator.start({ interaction: i });
       } else {
-        const paginator = new Paginator(realPages);
-        paginator.start({ interaction: i });
+        i.reply({
+          ephemeral: true,
+          content: 'This message is out of date!',
+        });
       }
     }
   });
