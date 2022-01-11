@@ -25,7 +25,7 @@ let realPages: MessageEditOptions[] = [];
 process.on('unhandledRejection', console.error);
 
 (async () => {
-  client.on('ready', () => {
+  client.on('ready', async () => {
     console.log('Ready as ' + client.user.tag);
     client.user.setActivity({
       type: 'WATCHING',
@@ -33,35 +33,41 @@ process.on('unhandledRejection', console.error);
     });
     console.log('Registering slash commands....');
     const rest = new REST({ version: '9' }).setToken(token);
-
-    try {
-      rest.put(Routes.applicationCommands(client.user.id), {
-        body: [
-          new SlashCommandBuilder()
+    const commands: any[] = [
+      new SlashCommandBuilder()
+        .setName('channel')
+        .setDescription('Adds or removes a channel to send alerts')
+        .addStringOption((option) =>
+          option
+            .setName('operation')
+            .setRequired(true)
+            .setDescription('Whether or not to add or remove a channel')
+            .addChoice('add', 'add')
+            .addChoice('remove', 'remove')
+        )
+        .addChannelOption((option) =>
+          option
             .setName('channel')
-            .setDescription('Adds or removes a channel to send alerts')
-            .addStringOption((option) =>
-              option
-                .setName('operation')
-                .setRequired(true)
-                .setDescription('Whether or not to add or remove a channel')
-                .addChoice('add', 'add')
-                .addChoice('remove', 'remove')
-            )
-            .addChannelOption((option) =>
-              option
-                .setName('channel')
-                .setDescription('The channel to add or remove')
-                .addChannelType(ChannelType.GuildText)
-                .setRequired(true)
-            )
-            .toJSON(),
-          new SlashCommandBuilder()
-            .setName('alert')
-            .setDescription('Shows the latest alert')
-            .toJSON(),
-        ],
+            .setDescription('The channel to add or remove')
+            .addChannelType(ChannelType.GuildText)
+            .setRequired(true)
+        )
+        .toJSON(),
+      new SlashCommandBuilder()
+        .setName('alert')
+        .setDescription('Shows the latest alert')
+        .toJSON(),
+    ];
+    try {
+      await rest.put(Routes.applicationCommands(client.user.id), {
+        body: commands,
       });
+      await rest.put(
+        Routes.applicationGuildCommands(client.user.id, '892256861947064341'),
+        {
+          body: commands,
+        }
+      );
       console.log('Done!');
     } catch (e) {
       console.error(e);
