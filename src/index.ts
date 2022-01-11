@@ -21,7 +21,9 @@ process.on('unhandledRejection', console.error);
     });
   });
   setInterval(async () => {
-    const homePage = await axios.get('https://lwsd.org');
+    const homePage = await axios.get(
+      'https://jhs.lwsd.org/counseling/new-student-enrollment-information'
+    );
     const $ = load(homePage.data);
     const cache = JSON.parse(fs.readFileSync('./cache.json').toString());
     if ($('.fsPagePopTitle').html() !== cache.lastEntry) {
