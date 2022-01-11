@@ -133,7 +133,7 @@ process.on('unhandledRejection', console.error);
           };
         });
         realPages = pages;
-        const paginator = new Paginator(realPages);
+        const paginator = new Paginator(pages);
         paginator.start({ interaction: i });
       } else {
         const paginator = new Paginator(realPages);
