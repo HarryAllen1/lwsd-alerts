@@ -9,6 +9,8 @@
   "author": "Harry Allen",
   "license": "MIT",
   "dependencies": {
+    "@discordjs/builders": "^0.11.0",
+    "@discordjs/rest": "^0.2.0-canary.0",
     "axios": "^0.24.0",
     "cheerio": "^1.0.0-rc.10",
     "discord-api-types": "^0.26.1",

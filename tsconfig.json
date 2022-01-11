@@ -6,6 +6,6 @@
     "module": "CommonJS",
     "target": "ES2021",
     "outDir": "out",
-    "esModuleInterop": true
+    "esModuleInterop": true,
   }
 }
