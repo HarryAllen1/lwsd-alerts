@@ -83,6 +83,8 @@ process.on('unhandledRejection', console.error);
       // check if the first page of the carousel has changed
       if ($('#fsPagePopCollection').html() === cache.lastEntry) return;
 
+      if ($('.fsPagePopTitle').html() === '') return;
+
       const pages: MessageEditOptions[] = [];
       const messages: string[] = [];
       $('.fsPagePopMessage').each((i, el) => {
