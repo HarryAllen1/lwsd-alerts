@@ -84,6 +84,7 @@ process.on('unhandledRejection', console.error);
       if ($('#fsPagePopCollection').html() === cache.lastEntry) return;
 
       if ($('.fsPagePopTitle').html() === '') return;
+      if (!realPages.length) return;
 
       const pages: MessageEditOptions[] = [];
       const messages: string[] = [];
@@ -175,6 +176,13 @@ process.on('unhandledRejection', console.error);
           };
         });
         realPages = pages;
+        if (!realPages.length) {
+          i.reply({
+            content: "There isn't actually any link lol",
+            ephemeral: true,
+          });
+          return;
+        }
         const paginator = new Paginator(pages);
         paginator.start({ interaction: i });
       } else {
