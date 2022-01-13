@@ -152,6 +152,7 @@ process.on('unhandledRejection', console.error);
     if (i.isButton() && i.customId === 'viewAlerts') {
       const homePage = await axios.get('https://lwsd.org');
       const $ = load(homePage.data);
+      if ($('.fsPagePopTitle').html() === '') return;
       if ($('article.fsPagePop.slick-slide')) {
         // check if the first page of the carousel has changed
 
