@@ -178,7 +178,7 @@ process.on('unhandledRejection', console.error);
         realPages = pages;
         if (!realPages.length) {
           i.reply({
-            content: "There isn't actually any link lol",
+            content: "There isn't actually any alert lol",
             ephemeral: true,
           });
           return;
