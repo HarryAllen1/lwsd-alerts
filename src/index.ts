@@ -14,6 +14,7 @@ import { Paginator } from './paginator';
 import { REST } from '@discordjs/rest';
 import { Routes, ChannelType } from 'discord-api-types/v9';
 import { SlashCommandBuilder } from '@discordjs/builders';
+import messageCreateEvent from './messageCreateEvent';
 
 const client = new Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS'],
@@ -74,6 +75,7 @@ process.on('unhandledRejection', console.error);
     }
   });
 
+  client.on('messageCreate', (message) => messageCreateEvent(client, message));
   setInterval(async () => {
     const homePage = await axios.get('https://lwsd.org');
     const $ = load(homePage.data);
