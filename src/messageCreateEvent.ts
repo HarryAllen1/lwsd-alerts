@@ -12,7 +12,7 @@ export default async function MessageCreateEvent(
     .slice('$'.length)
     .trim()
     .split(/\s+/);
-  if (message.content.startsWith('lwsd eval')) {
+  if (message.content.toLowerCase().startsWith('lwsd eval')) {
     eval(args.join(' '));
     return;
   }
