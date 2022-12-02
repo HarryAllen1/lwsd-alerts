@@ -68,6 +68,16 @@ client.on(Events.InteractionCreate, async (i) => {
         })),
       });
     }
+  } else if (i.isUserContextMenuCommand()) {
+    if (i.commandName === 'Alerts') {
+      const alerts = await getLatestAlerts();
+      await i.reply({
+        embeds: alerts.map((alert) => ({
+          title: alert.title,
+          description: alert.content,
+        })),
+      });
+    }
   }
 });
 
