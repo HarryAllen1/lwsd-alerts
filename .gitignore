@@ -1,4 +1,3 @@
-config.json
-out/
+dist/
 node_modules
-/channels.json
+src/config.ts

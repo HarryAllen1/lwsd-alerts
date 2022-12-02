@@ -1,0 +1,11 @@
+diff --git a/lib/esm/static.d.ts b/lib/esm/static.d.ts
+index 8c71d6b2b0afb83bb8c9d774f1feea5cf32aaf2e..abc194f4f307b0338cd89ce7a9c18662942eb13a 100644
+--- a/lib/esm/static.d.ts
++++ b/lib/esm/static.d.ts
+@@ -1,5 +1,5 @@
+ import type { BasicAcceptedElems } from './types.js';
+-import type { CheerioAPI, Cheerio } from '.';
++import type { CheerioAPI, Cheerio } from './index.js';
+ import type { AnyNode, Document } from 'domhandler';
+ import { CheerioOptions } from './options.js';
+ /**

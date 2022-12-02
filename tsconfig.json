@@ -1,11 +1,19 @@
 {
   "compilerOptions": {
-    "typeRoots": ["node_modules/@types"],
-    "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
-    "module": "CommonJS",
+    "module": "NodeNext",
     "target": "ES2021",
     "outDir": "out",
+    "strictNullChecks": true,
     "esModuleInterop": true,
-  }
+  },
+  "include": [
+    "src/**/*",
+    ".eslintrc.cjs",
+    "tsup.config.ts"
+  ]
 }
