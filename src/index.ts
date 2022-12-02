@@ -1,4 +1,9 @@
-import { Client, GatewayIntentBits, TextChannel } from 'discord.js';
+import {
+  ActivityType,
+  Client,
+  GatewayIntentBits,
+  TextChannel,
+} from 'discord.js';
 import { readCache, writeToCache } from './cache.js';
 import { config } from './config.js';
 import { getLatestAlerts } from './http.js';
@@ -13,6 +18,11 @@ const client = new Client({
 
 client.on('ready', () => {
   console.log('Ready!');
+  client.user?.setActivity({
+    type: ActivityType.Watching,
+    name: 'the LWSD homepage',
+    url: 'https://lwsd.org/',
+  });
 
   setInterval(async () => {
     const alerts = await getLatestAlerts();
