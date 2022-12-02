@@ -17,7 +17,20 @@ client.on('ready', () => {
   setInterval(async () => {
     const alerts = await getLatestAlerts();
 
-    if ((await readCache()).lastEntries !== alerts) {
+    let isSame = true;
+    const { lastEntries } = await readCache();
+    if (alerts.length !== lastEntries.length) {
+      isSame = false;
+    } else {
+      for (let i = 0; i < alerts.length; i++) {
+        if (alerts[i].title !== lastEntries[i].title) {
+          isSame = false;
+          break;
+        }
+      }
+    }
+
+    if (!isSame) {
       config.channels.forEach(async (channelId) => {
         const channel = (await client.channels.fetch(channelId)) as TextChannel;
 
