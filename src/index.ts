@@ -46,4 +46,18 @@ client.on('ready', () => {
   }, 1000 * 60 * 2);
 });
 
+client.on('interactionCreate', async (i) => {
+  if (i.isChatInputCommand()) {
+    if (i.commandName === 'alert') {
+      const alerts = await getLatestAlerts();
+      await i.reply({
+        embeds: alerts.map((alert) => ({
+          title: alert.title,
+          description: alert.content,
+        })),
+      });
+    }
+  }
+});
+
 await client.login(config.token);
