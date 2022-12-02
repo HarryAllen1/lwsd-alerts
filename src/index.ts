@@ -1,6 +1,7 @@
 import {
   ActivityType,
   Client,
+  Events,
   GatewayIntentBits,
   TextChannel,
 } from 'discord.js';
@@ -16,7 +17,7 @@ const client = new Client({
   ],
 });
 
-client.on('ready', () => {
+client.on(Events.ClientReady, () => {
   console.log('Ready!');
   client.user?.setActivity({
     type: ActivityType.Watching,
@@ -56,7 +57,7 @@ client.on('ready', () => {
   }, 1000 * 60 * 2);
 });
 
-client.on('interactionCreate', async (i) => {
+client.on(Events.InteractionCreate, async (i) => {
   if (i.isChatInputCommand()) {
     if (i.commandName === 'alert') {
       const alerts = await getLatestAlerts();
