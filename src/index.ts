@@ -46,9 +46,9 @@ client.on(Events.ClientReady, () => {
         const channel = (await client.channels.fetch(channelId)) as TextChannel;
 
         await channel.send({
-          embeds: alerts.map((alert) => ({
-            title: alert.title,
-            description: alert.content,
+          embeds: alerts.map(({ title, content: description }) => ({
+            title,
+            description,
           })),
         });
       });
@@ -61,20 +61,22 @@ client.on(Events.InteractionCreate, async (i) => {
   if (i.isChatInputCommand()) {
     if (i.commandName === 'alert') {
       const alerts = await getLatestAlerts();
+
       await i.reply({
-        embeds: alerts.map((alert) => ({
-          title: alert.title,
-          description: alert.content,
+        embeds: alerts.map(({ title, content: description }) => ({
+          title,
+          description,
         })),
       });
     }
   } else if (i.isUserContextMenuCommand()) {
     if (i.commandName === 'Alerts') {
       const alerts = await getLatestAlerts();
+
       await i.reply({
-        embeds: alerts.map((alert) => ({
-          title: alert.title,
-          description: alert.content,
+        embeds: alerts.map(({ title, content: description }) => ({
+          title,
+          description,
         })),
       });
     }
