@@ -8,6 +8,7 @@ import {
 import { readCache, writeToCache } from './cache.js';
 import { config } from './config.js';
 import { getLatestAlerts } from './http.js';
+import isEqual from 'lodash.isequal';
 
 const client = new Client({
   intents: [
@@ -28,18 +29,8 @@ client.on(Events.ClientReady, () => {
   setInterval(async () => {
     const alerts = await getLatestAlerts();
 
-    let isSame = true;
     const { lastEntries } = await readCache();
-    if (alerts.length !== lastEntries.length) {
-      isSame = false;
-    } else {
-      for (let i = 0; i < alerts.length; i++) {
-        if (alerts[i].title !== lastEntries[i].title) {
-          isSame = false;
-          break;
-        }
-      }
-    }
+    const isSame = isEqual(alerts, lastEntries);
 
     if (!isSame) {
       config.channels.forEach(async (channelId) => {

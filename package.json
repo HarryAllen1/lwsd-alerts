@@ -14,9 +14,11 @@
     "@sapphire/discord.js-utilities": "5.1.0-pr-434.9fcf7df.0",
     "cheerio": "1.0.0-rc.12",
     "discord.js": "^14.7.1",
+    "lodash.isequal": "^4.5.0",
     "turndown": "^7.1.1"
   },
   "devDependencies": {
+    "@types/lodash.isequal": "^4.5.6",
     "@types/node": "^18.11.10",
     "@types/turndown": "^5.0.1",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
