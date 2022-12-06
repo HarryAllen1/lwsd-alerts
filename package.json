@@ -11,7 +11,7 @@
   "author": "Harry Allen",
   "license": "MIT",
   "dependencies": {
-    "@sapphire/discord.js-utilities": "5.1.0-pr-434.9fcf7df.0",
+    "@sapphire/discord.js-utilities": "5.1.2",
     "cheerio": "1.0.0-rc.12",
     "discord.js": "^14.7.1",
     "lodash.isequal": "^4.5.0",
