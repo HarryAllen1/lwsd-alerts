@@ -6,7 +6,7 @@ patchedDependencies:
     path: patches/cheerio@1.0.0-rc.12.patch
 
 specifiers:
-  '@sapphire/discord.js-utilities': 5.2.0-pr-434.3d4d96b.0
+  '@sapphire/discord.js-utilities': 5.2.0-pr-434.e1a13a3.0
   '@types/lodash.isequal': ^4.5.6
   '@types/node': ^18.11.18
   '@types/turndown': ^5.0.1
@@ -22,7 +22,7 @@ specifiers:
   typescript: ^4.9.4
 
 dependencies:
-  '@sapphire/discord.js-utilities': 5.2.0-pr-434.3d4d96b.0
+  '@sapphire/discord.js-utilities': 5.2.0-pr-434.e1a13a3.0
   cheerio: 1.0.0-rc.12_d7od4i2ptttn5byfl7yho6guay
   discord.js: 14.7.1
   lodash.isequal: 4.5.0
@@ -165,8 +165,8 @@ packages:
       discord-api-types: 0.37.25
     dev: false
 
-  /@sapphire/discord.js-utilities/5.2.0-pr-434.3d4d96b.0:
-    resolution: {integrity: sha512-PWognHXCrKoHVEd1PIRRLhnnvIZQzwBP6tiFCJ59MacXyuqlj9g9kUqJRbQ72VMYKR8ZxyR1OF89edoc4z17jw==}
+  /@sapphire/discord.js-utilities/5.2.0-pr-434.e1a13a3.0:
+    resolution: {integrity: sha512-xJzeoXIS6LFi0OihkfE60Zdzu3QRdAgflB7g1NhA42mP8FT6sQthn9+Dtf6T8+ePWDJa+y1w5mw6x9pfUptnGQ==}
     engines: {node: '>=16.6.0', npm: '>=7.0.0'}
     dependencies:
       '@sapphire/discord-utilities': 2.13.0-pr-434.e1a13a3.0
