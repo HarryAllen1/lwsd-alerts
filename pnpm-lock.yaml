@@ -8,7 +8,7 @@ patchedDependencies:
 specifiers:
   '@sapphire/discord.js-utilities': 5.2.0-pr-434.3d4d96b.0
   '@types/lodash.isequal': ^4.5.6
-  '@types/node': ^18.11.18
+  '@types/node': ^20.0.0
   '@types/turndown': ^5.0.1
   '@typescript-eslint/eslint-plugin': ^5.47.1
   '@typescript-eslint/parser': ^5.47.1
@@ -30,7 +30,7 @@ dependencies:
 
 devDependencies:
   '@types/lodash.isequal': 4.5.6
-  '@types/node': 18.11.18
+  '@types/node': 20.8.8
   '@types/turndown': 5.0.1
   '@typescript-eslint/eslint-plugin': 5.47.1_axni7f4fgvh6tlufnh6hwgsifq
   '@typescript-eslint/parser': 5.47.1_iukboom6ndih5an6iafl45j2fe
@@ -216,8 +216,10 @@ packages:
     resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
     dev: true
 
-  /@types/node/18.11.18:
-    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
+  /@types/node/20.8.8:
+    resolution: {integrity: sha512-YRsdVxq6OaLfmR9Hy816IMp33xOBjfyOgUd77ehqg96CFywxAPbDbXvAsuN2KVg2HOT8Eh6uAfU+l4WffwPVrQ==}
+    dependencies:
+      undici-types: 5.25.3
 
   /@types/semver/7.3.13:
     resolution: {integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==}
@@ -230,7 +232,7 @@ packages:
   /@types/ws/8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
     dependencies:
-      '@types/node': 18.11.18
+      '@types/node': 20.8.8
     dev: false
 
   /@typescript-eslint/eslint-plugin/5.47.1_axni7f4fgvh6tlufnh6hwgsifq:
@@ -1819,6 +1821,9 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
+
+  /undici-types/5.25.3:
+    resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
 
   /undici/5.13.0:
     resolution: {integrity: sha512-UDZKtwb2k7KRsK4SdXWG7ErXiL7yTGgLWvk2AXO1JMjgjh404nFo6tWSCM2xMpJwMPx3J8i/vfqEh1zOqvj82Q==}
