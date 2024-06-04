@@ -6,7 +6,7 @@ patchedDependencies:
     path: patches/cheerio@1.0.0-rc.12.patch
 
 specifiers:
-  '@sapphire/discord.js-utilities': 5.2.0-pr-434.3d4d96b.0
+  '@sapphire/discord.js-utilities': 7.3.0
   '@types/lodash.isequal': ^4.5.6
   '@types/node': ^18.11.18
   '@types/turndown': ^5.0.1
@@ -22,7 +22,7 @@ specifiers:
   typescript: ^4.9.4
 
 dependencies:
-  '@sapphire/discord.js-utilities': 5.2.0-pr-434.3d4d96b.0
+  '@sapphire/discord.js-utilities': 7.3.0
   cheerio: 1.0.0-rc.12_d7od4i2ptttn5byfl7yho6guay
   discord.js: 14.7.1
   lodash.isequal: 4.5.0
@@ -158,25 +158,25 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@sapphire/discord-utilities/2.13.0-pr-434.e1a13a3.0:
-    resolution: {integrity: sha512-ON2LcSneervIELsVhQ9CbNLrz8tEOjFiS2NLE+noW5N7TYfMFvi/bZMXvdbFzs2XrrIqc4EwqE3HVy+leNh4zg==}
+  /@sapphire/discord-utilities/3.3.0:
+    resolution: {integrity: sha512-xHAe22GSM4NjhNiyZ/5gwEF+uFDPHSrZABWypPGDUIK+CNDDPyPf56ooUb8cm02dVcU81wzscnRXK2cLY6RPcg==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dependencies:
-      discord-api-types: 0.37.25
+      discord-api-types: 0.37.87
     dev: false
 
-  /@sapphire/discord.js-utilities/5.2.0-pr-434.3d4d96b.0:
-    resolution: {integrity: sha512-PWognHXCrKoHVEd1PIRRLhnnvIZQzwBP6tiFCJ59MacXyuqlj9g9kUqJRbQ72VMYKR8ZxyR1OF89edoc4z17jw==}
+  /@sapphire/discord.js-utilities/7.3.0:
+    resolution: {integrity: sha512-SOacsoV8eqPz0YqyXwNNZChNhz09QEhTrrGm+rnG+xZbglODtnoYmEgmLIemr2t6eyxPRerwhakacfyNYGapVg==}
     engines: {node: '>=16.6.0', npm: '>=7.0.0'}
     dependencies:
-      '@sapphire/discord-utilities': 2.13.0-pr-434.e1a13a3.0
-      '@sapphire/duration': 1.0.0
-      '@sapphire/utilities': 3.11.0
-      tslib: 2.4.1
+      '@sapphire/discord-utilities': 3.3.0
+      '@sapphire/duration': 1.1.2
+      '@sapphire/utilities': 3.16.2
+      tslib: 2.6.2
     dev: false
 
-  /@sapphire/duration/1.0.0:
-    resolution: {integrity: sha512-B+6nKYnBmIlqqbamcR4iBvbQHz6/Kq2JUVM0rA3lQ+aYUYDdcA1Spt66CKtPWwdTYEtSv0VY6Jv27WCtFNYTUg==}
+  /@sapphire/duration/1.1.2:
+    resolution: {integrity: sha512-m+DpXedUHdnH3rM6P9Hiyb9dpdXKb8WeTAVIug0QuN8tarQedbymbOor+UFmBfCbKOkoW9HvGK10xDwDvSfKrw==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
@@ -193,9 +193,9 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@sapphire/utilities/3.11.0:
-    resolution: {integrity: sha512-ich7J+329UTEgWxgk8b871rMhbFW/hvXdabdiKaUKd6g10eIMkIakWf+EGkDQsiDSiebIXll9TIPPmWtN3cVSw==}
-    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+  /@sapphire/utilities/3.16.2:
+    resolution: {integrity: sha512-0gRyXPH0hbmfZXwgvCH1z9H/kQwOlLeui86zKafZENpdjmuZznSkDFHRSUksr8Y5W/BxkqnR2WbNEfululh20Q==}
+    engines: {node: '>=v14.0.0'}
     dev: false
 
   /@tokenizer/token/0.3.0:
@@ -593,6 +593,10 @@ packages:
 
   /discord-api-types/0.37.25:
     resolution: {integrity: sha512-aCwA2sWnL1zPQgTELkkMzQneuWyCXXUjZCUKswesiE6RDCfOfxAPXOHg6ZTlBA5layPSikGCBBRjyh8S3Wzd+A==}
+    dev: false
+
+  /discord-api-types/0.37.87:
+    resolution: {integrity: sha512-9KfluFS1J22RuezzouGs2t5X/Yu3jNpmRJrG+dvu1R9R+wfxlhq1RXr/OjjVL6d4rr7Ez92yNWiImf/qX3GV1g==}
     dev: false
 
   /discord.js/14.7.1:
@@ -1748,6 +1752,10 @@ packages:
 
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+    dev: false
+
+  /tslib/2.6.2:
+    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: false
 
   /tsup/6.5.0_typescript@4.9.4:
