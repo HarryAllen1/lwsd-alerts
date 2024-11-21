@@ -4,6 +4,7 @@ import {
   Client,
   Events,
   GatewayIntentBits,
+  roleMention,
   TextChannel,
 } from 'discord.js';
 import { readCache, writeToCache } from './cache.js';
@@ -28,12 +29,22 @@ const checkAndSendAlerts = async (): Promise<void> => {
     for (const channelId of config.channels) {
       const channel = (await client.channels.fetch(channelId)) as TextChannel;
 
-      await channel.send({
-        embeds: alerts.map(({ title, content: description }) => ({
-          title,
-          description,
-        })),
-      });
+      await channel.send(
+        channelId === '888512392584122478'
+          ? {
+              content: roleMention('1308986605712834560'),
+              embeds: alerts.map(({ title, content: description }) => ({
+                title,
+                description,
+              })),
+            }
+          : {
+              embeds: alerts.map(({ title, content: description }) => ({
+                title,
+                description,
+              })),
+            }
+      );
     }
   }
   await writeToCache(JSON.stringify({ lastEntries: alerts }));
