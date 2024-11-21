@@ -1,3 +1,4 @@
+import { dequal } from 'dequal';
 import {
   ActivityType,
   Client,
@@ -8,7 +9,6 @@ import {
 import { readCache, writeToCache } from './cache.js';
 import { config } from './config.js';
 import { getLatestAlerts } from './http.js';
-import isEqual from 'lodash.isequal';
 
 const client = new Client({
   intents: [
@@ -18,7 +18,32 @@ const client = new Client({
   ],
 });
 
+const checkAndSendAlerts = async (): Promise<void> => {
+  const alerts = await getLatestAlerts();
+
+  const { lastEntries } = await readCache();
+  const isSame = dequal(alerts, lastEntries);
+
+  if (!isSame && alerts.every((a) => a.title && a.content)) {
+    for (const channelId of config.channels) {
+      const channel = (await client.channels.fetch(channelId)) as TextChannel;
+
+      await channel.send({
+        embeds: alerts.map(({ title, content: description }) => ({
+          title,
+          description,
+        })),
+      });
+    }
+  }
+  await writeToCache(JSON.stringify({ lastEntries: alerts }));
+};
+
 client.on(Events.ClientReady, () => {
+  // const TEST_CHANNEL = (await client.channels.fetch(
+  //   '888611523881213972'
+  // )) as TextChannel;
+
   console.log('Ready!');
   client.user?.setActivity({
     type: ActivityType.Watching,
@@ -26,26 +51,7 @@ client.on(Events.ClientReady, () => {
     url: 'https://lwsd.org/',
   });
 
-  setInterval(async () => {
-    const alerts = await getLatestAlerts();
-
-    const { lastEntries } = await readCache();
-    const isSame = isEqual(alerts, lastEntries);
-
-    if (!isSame) {
-      config.channels.forEach(async (channelId) => {
-        const channel = (await client.channels.fetch(channelId)) as TextChannel;
-
-        await channel.send({
-          embeds: alerts.map(({ title, content: description }) => ({
-            title,
-            description,
-          })),
-        });
-      });
-    }
-    await writeToCache(JSON.stringify({ lastEntries: alerts }));
-  }, 1000 * 60 * 2);
+  setInterval(checkAndSendAlerts, 1000 * 60 * 2);
 });
 
 client.on(Events.InteractionCreate, async (i) => {
@@ -71,6 +77,8 @@ client.on(Events.InteractionCreate, async (i) => {
         })),
       });
     }
+  } else if (i.isStringSelectMenu()) {
+    // console.log(i.reply({}));
   }
 });
 
