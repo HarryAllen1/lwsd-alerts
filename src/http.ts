@@ -7,7 +7,7 @@ const turndown = new Turndown({
   hr: '---',
 });
 
-turndown.addRule('', {
+turndown.addRule("don't escape identity links", {
   filter: 'a',
   replacement: (content, node) =>
     content.trim() === (node as HTMLAnchorElement).href
