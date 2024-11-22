@@ -16,7 +16,7 @@ turndown.addRule("don't escape identity links", {
 });
 
 export const getLatestAlerts: () => Promise<CacheEntry[]> = async () => {
-  const response = await fetch('https://jhs.lwsd.org');
+  const response = await fetch('https://jhs.lwsd.org/fs/pages/22716/page-pops');
   const html = await response.text();
   const $ = load(html);
 

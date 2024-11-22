@@ -29,29 +29,30 @@ const checkAndSendAlerts = async (): Promise<void> => {
     for (const channelId of config.channels) {
       const channel = (await client.channels.fetch(channelId)) as TextChannel;
 
-      await channel.send(
-        channelId === '888512392584122478'
-          ? {
-              content: roleMention('1308986605712834560'),
-              embeds: alerts.map(({ title, content: description }) => ({
-                title,
-                description,
-              })),
-            }
-          : {
-              content: 'alert:',
-              embeds: alerts.map(({ title, content: description }) => ({
-                title,
-                description,
-              })),
-            }
-      );
+      if (alerts.every((a) => a.title && a.content))
+        await channel.send(
+          channelId === '888512392584122478'
+            ? {
+                content: roleMention('1308986605712834560'),
+                embeds: alerts.map(({ title, content: description }) => ({
+                  title,
+                  description,
+                })),
+              }
+            : {
+                content: 'Alert:',
+                embeds: alerts.map(({ title, content: description }) => ({
+                  title,
+                  description,
+                })),
+              }
+        );
     }
   }
   await writeToCache(JSON.stringify({ lastEntries: alerts }));
 };
 
-client.on(Events.ClientReady, () => {
+client.on(Events.ClientReady, async () => {
   // const TEST_CHANNEL = (await client.channels.fetch(
   //   '888611523881213972'
   // )) as TextChannel;
@@ -63,7 +64,9 @@ client.on(Events.ClientReady, () => {
     url: 'https://lwsd.org/',
   });
 
-  setInterval(checkAndSendAlerts, 1000 * 60 * 2);
+  await checkAndSendAlerts();
+
+  setInterval(checkAndSendAlerts, 1000 * 15);
 });
 
 client.on(Events.InteractionCreate, async (i) => {
