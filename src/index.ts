@@ -29,24 +29,24 @@ const checkAndSendAlerts = async (): Promise<void> => {
     for (const channelId of config.channels) {
       const channel = (await client.channels.fetch(channelId)) as TextChannel;
 
-      // if (alerts.every((a) => a.title && a.content))
-      //   await channel.send(
-      //     channelId === '888512392584122478'
-      //       ? {
-      //           content: roleMention('1308986605712834560'),
-      //           embeds: alerts.map(({ title, content: description }) => ({
-      //             title,
-      //             description,
-      //           })),
-      //         }
-      //       : {
-      //           content: 'Alert:',
-      //           embeds: alerts.map(({ title, content: description }) => ({
-      //             title,
-      //             description,
-      //           })),
-      //         }
-      //   );
+      if (alerts.every((a) => a.title && a.content))
+        await channel.send(
+          channelId === '888512392584122478'
+            ? {
+                content: roleMention('1308986605712834560'),
+                embeds: alerts.map(({ title, content: description }) => ({
+                  title,
+                  description,
+                })),
+              }
+            : {
+                content: 'Alert:',
+                embeds: alerts.map(({ title, content: description }) => ({
+                  title,
+                  description,
+                })),
+              }
+        );
     }
   }
   await writeToCache(JSON.stringify({ lastEntries: alerts }));
