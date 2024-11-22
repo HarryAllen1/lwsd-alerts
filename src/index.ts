@@ -66,7 +66,7 @@ client.on(Events.ClientReady, async () => {
 
   await checkAndSendAlerts();
 
-  setInterval(checkAndSendAlerts, 1000 * 15);
+  setInterval(checkAndSendAlerts, 1000 * 60 * 2);
 });
 
 client.on(Events.InteractionCreate, async (i) => {
