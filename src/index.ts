@@ -39,6 +39,7 @@ const checkAndSendAlerts = async (): Promise<void> => {
               })),
             }
           : {
+              content: 'alert:',
               embeds: alerts.map(({ title, content: description }) => ({
                 title,
                 description,
