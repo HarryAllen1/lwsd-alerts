@@ -27,12 +27,16 @@ const checkAndSendAlerts = async (): Promise<void> => {
 
   if (
     !isSame &&
-    alerts.every((a) => a.title.length > 0 && a.content.length > 0)
+    alerts.every((a) => a.title.length > 0 && a.content.length > 0) &&
+    alerts.length > 0
   ) {
     for (const channelId of config.channels) {
       const channel = (await client.channels.fetch(channelId)) as TextChannel;
 
-      if (alerts.every((a) => a.title.length > 0 && a.content.length > 0))
+      if (
+        alerts.every((a) => a.title.length > 0 && a.content.length > 0) &&
+        alerts.length > 0
+      )
         await channel.send(
           channelId === '888512392584122478'
             ? {
