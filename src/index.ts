@@ -23,7 +23,28 @@ const checkAndSendAlerts = async (): Promise<void> => {
   const alerts = await getLatestAlerts();
 
   const { lastEntries } = await readCache();
-  const isSame = dequal(alerts, lastEntries);
+  const isSame = dequal(
+    alerts.map((alert) => ({
+      title: alert.title
+        .replaceAll(/[\r\n]+/g, ' ')
+        .trim()
+        .replaceAll('*', ''),
+      content: alert.content
+        .replaceAll(/[\r\n]+/g, ' ')
+        .trim()
+        .replaceAll('*', ''),
+    })),
+    lastEntries.map((alert) => ({
+      title: alert.title
+        .replaceAll(/[\r\n]+/g, ' ')
+        .trim()
+        .replaceAll('*', ''),
+      content: alert.content
+        .replaceAll(/[\r\n]+/g, ' ')
+        .trim()
+        .replaceAll('*', ''),
+    }))
+  );
 
   if (
     !isSame &&

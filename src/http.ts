@@ -23,11 +23,15 @@ export const getLatestAlerts: () => Promise<CacheEntry[]> = async () => {
   const alerts: { title: string; content: string }[] = [];
   $('.fsPagePop').each((i, element) => {
     const title = $(element).find('.fsPagePopTitle').text();
-    if (title.toLowerCase().includes('bus route cancellation') || title.toLowerCase().includes('lottery')) return;
+    if (
+      title.toLowerCase().includes('bus route cancellation') ||
+      title.toLowerCase().includes('lottery')
+    )
+      return;
     const content = $(element).find('.fsPagePopMessage').html();
     alerts.push({
-      title,
-      content: turndown.turndown(content ?? '(no content found)'),
+      title: title.trim(),
+      content: turndown.turndown(content ?? '(no content found)').trim(),
     });
   });
   return alerts;
