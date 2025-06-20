@@ -26,20 +26,24 @@ const checkAndSendAlerts = async (): Promise<void> => {
   const isSame = dequal(
     alerts.map((alert) => ({
       title: alert.title
+        .toLowerCase()
         .replaceAll(/[\r\n]+/g, ' ')
         .trim()
         .replaceAll('*', ''),
       content: alert.content
+        .toLowerCase()
         .replaceAll(/[\r\n]+/g, ' ')
         .trim()
         .replaceAll('*', ''),
     })),
     lastEntries.map((alert) => ({
       title: alert.title
+        .toLowerCase()
         .replaceAll(/[\r\n]+/g, ' ')
         .trim()
         .replaceAll('*', ''),
       content: alert.content
+        .toLowerCase()
         .replaceAll(/[\r\n]+/g, ' ')
         .trim()
         .replaceAll('*', ''),
